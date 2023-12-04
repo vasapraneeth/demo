@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Users</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Users</h3>
+    <hr>
+
+    <a th:href="@{/api/showFormForAddingUsers}"
+       class="btn btn-primary btn-sm mb-3">
+        Add User
+    </a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone number</th>
+            <th>Date of registration</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempUser : ${users}">
+
+            <td th:text="${tempUser.id}" />
+            <td th:text="${tempUser.name}" />
+            <td th:text="${tempUser.phoneNumber}" />
+            <td th:text="${tempUser.dateOfRegistration}" />
+            <td th:text="${tempUser.status}" />
+
+            <!-- Add update button/link -->
+            <td>
+                <a th:href="@{/api/userAddress(id=${tempUser.id})}"
+                   class="btn btn-primary btn-sm">
+                    user addresses
+                </a>
+
+                <a th:href="@{/api/showFormForUpdatingUsers(id=${tempUser.id})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+
+                <!-- Add "delete" button/link -->
+                <a th:href="@{/api/deleteUser(id=${tempUser.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false">
+                    Delete
+                </a>
+                <!--					   onclick="return confirm('Are you sure you want to delete?')">-->
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

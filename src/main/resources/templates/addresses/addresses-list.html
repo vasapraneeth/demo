@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <title>Addresses</title>
+</head>
+<body>
+
+<div class="container">
+  <h3>Users</h3>
+  <hr>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Address</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempAddress : ${addresses}">
+
+      <td th:text="${tempAddress.userMaster.id}" />
+      <td th:text="${tempAddress.fullAddress}" />
+
+    </tr>
+    </tbody>
+  </table>
+
+  <hr>
+  <a th:href="@{/api/users}">Back to Users List</a>
+</div>
+
+</body>
+</html>
